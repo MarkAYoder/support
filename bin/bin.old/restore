@@ -1,0 +1,20 @@
+#!/usr/bin/perl -w
+
+#
+# Takes files in the visible2.old cd structure and 'restore' them in the visible2 directory.
+#
+
+use strict;
+use Cwd;
+
+my $dir = cwd();
+my $file;
+my $oldDir = $dir;
+
+if($dir =~ s|/visible2/cdrom/visible2|/visible2/cdrom/visible2.old|) {
+  foreach $file (@ARGV) {
+    rename "$dir/$file", "$oldDir/$file" or die "Can't rename $dir to $dir";
+  }
+} else {
+  die "Can't find visible2 in the path\n";
+}

@@ -1,0 +1,2 @@
+sshfs yoder@dfs.rose-hulman.edu:/Users/Y/yoder rose-dfs-home
+# http://lug.rose-hulman.edu/wiki/HOWTO_Use_sshfs_to_mount_AFS/DFS_home

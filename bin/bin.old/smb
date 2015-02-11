@@ -1,0 +1,2 @@
+# mount -t smbfs -o username=yoder //samba/yoder  /mnt/smb/
+mount -t smbfs -o username=yoder,uid=500,gid=500 //samba/newgroups  /mnt/smb/

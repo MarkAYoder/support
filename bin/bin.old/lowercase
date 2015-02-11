@@ -1,0 +1,27 @@
+#!/usr/bin/perl
+
+use strict;
+
+# This script converts uppercase file and directory names to lowercase.
+
+mylower(@ARGV);
+
+sub mylower {
+  my $lower;
+  print "mylower(@_)\n";
+  foreach (@_) {
+    next if m/^(\.|\.\.)$/;
+    print "$_\n";
+    $lower = lc($_);
+    rename $_, $lower;
+    if(-d $lower) {
+      opendir(DIR, $lower) or die "Can't open dir $lower";
+      my @files = readdir(DIR);
+      print "@files\n";
+      closedir(DIR);
+      chdir $lower;
+      mylower(@files);
+      chdir '..';
+    }
+  }
+}

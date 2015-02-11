@@ -1,0 +1,3 @@
+# Signal First Stuff
+export CDROOT=$HOME/cdrom/dtsp
+export BOOKTYPE=dtsp

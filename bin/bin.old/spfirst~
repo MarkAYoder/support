@@ -1,0 +1,3 @@
+# Signal First Stuff
+export CDROOT=$HOME/projects/SignalFirst/visible3/cdrom/visible3
+export BOOKTYPE=spfirst

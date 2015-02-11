@@ -1,0 +1,2 @@
+rsync -e ssh -avz --links --exclude=tb --exclude=BeagleBoard --exclude=visible2 --exclude=.htaccess --exclude=*.dvdproj --exclude=dtspv*.zip --exclude mysync --delete /home/yoder/cdrom/ yoder@afs.rose-hulman.edu:/afs/rose-hulman.edu/groups/Books/DSPFirst/ > /tmp/mysync &
+tail -f /tmp/mysync

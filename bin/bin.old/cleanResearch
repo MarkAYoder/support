@@ -1,0 +1,40 @@
+#!/usr/bin/perl -w
+
+# Removes .htm files created by re.se@arch
+
+use strict;
+
+my $htmtime = time() - 7*60*60;
+
+myclean('.', @ARGV);
+
+sub myclean {
+#  print "myclean(@_)\n";
+  my $dir = shift;
+
+  foreach (@_) {
+    next if /^(\.|\.\.)$/;	# Skip . and ..
+#    print "$_\n";
+    my $clean = $_;
+    if(-d $clean) {
+      opendir(DIR, $clean) or die "Can't open dir $clean";
+      my @files = readdir(DIR);
+#      print "@files\n";
+      closedir(DIR);
+      chdir $clean;
+      myclean("$dir/$clean", @files);
+      chdir '..';
+    } else {
+      next unless /.*_.*\.htm$/;	# Only do files matching *_*.htm
+#      print "Checking $clean\n";
+      open FD, $_ or die "Can't open $dir/$_";
+      if(<FD> =~ m|<!DOCTYPE HTML PUBLIC "-//SoftQuad//DTD HoTMetaL PRO 4.0::19971010:: extensions to HTML 4.0//EN" "hmpro4.dtd">|) {
+	my ($dev, $ino, $mode, $nlink, $uid, $gid, $rdev, $size, $atime, $mtime) = stat $clean;
+	print "OLD\t" if($mtime < $htmtime);
+	print "***$dir/$_***\n";
+#	unlink $_;
+      }
+      close FD;
+    }	
+  }
+}

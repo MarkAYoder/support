@@ -1,0 +1,5 @@
+rsync -e ssh -navz --links --exclude-from=exclude-dell.txt /home/yoder/cdrom/ yoder@yoder-dell.dhcp.rose-hulman.edu:/home/yoder/cdrom > /tmp/mysync.dell &
+
+# rsync -e ssh -navz --links --exclude-from=exclude.txt --delete /home/yoder/cdrom/ yoder@yoder-dell.dhcp.rose-hulman.edu:/home/yoder/cdrom > /tmp/mysync.dell &
+
+tail -f /tmp/mysync.dell

@@ -1,0 +1,33 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+my $logFile = '/var/log/httpd/access_log';
+
+open FD, $logFile or die "Can't open $logFile";
+
+my @data = sort grep /visible2/, <FD>;
+
+$data[0] =~ /^([0-9\.]*)\s.*(\[.*?\])/;
+my $last = $1;
+my $date = $2;
+my $host = system("host $last");
+
+my $count = 0;
+my $line;
+foreach $line (@data) {
+  $count++;
+  $line =~ /^([0-9\.]*)\s.*(\[.*?\])/;
+#  print "****$1*****$last****\n";
+  next if($last eq $1);
+
+  $last = $1;
+  $date = $2;
+  print "***$count***$date***\n";
+  $host = system("host $last");
+  $count = 0;
+}
+
+print "***$count***\n";
+
+close FD;

@@ -1,0 +1,16 @@
+#
+# This creates the certificat needed to run ssl on Apache.
+# Put the file server.crt in /etc/httpd/conf/ssl.crt/server.crt
+# You might also look at /usr/share/ssl/misc/CA.pl
+#
+openssl req -config ~myoder/bin/ssleay.cnf \
+	-new -x509 -days 120 -nodes -out server.crt \
+	-keyout server.crt << EOF
+US
+Missouri
+St. Louis
+TradeHarbor
+Engineering
+mortgage.tradeharbor.com
+myoder@TradeHarbor.com
+EOF

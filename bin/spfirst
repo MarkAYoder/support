@@ -1,0 +1,5 @@
+# Signal First Stuff
+export CDROOT=$HOME/cdrom/visible3
+export BOOKTYPE=spfirst
+export PERL5LIB=$HOME/cdrom/support/lib
+export CD2HTMLDATA=$HOME/cdrom/support/lib/cd2htmlData

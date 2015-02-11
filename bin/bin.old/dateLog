@@ -1,0 +1,17 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+my $file;
+foreach $file (@ARGV) {
+  my ($dev, $ino,$mode,$nlink,$uid,$gid,$rdev,
+      $size,$atime,$mtime,$ctime,$blksize,$blocks) = stat($file);
+
+  print "$file, mtime = $mtime\n";
+
+  my $tmp = ' ' . localtime($mtime);
+
+  print "$tmp\n";
+
+  rename $file, $file . $tmp;
+}

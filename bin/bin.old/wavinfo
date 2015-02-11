@@ -1,0 +1,11 @@
+#!/usr/bin/perl -w
+
+use strict;
+use Audio::Wav;
+use Data::Dumper;
+
+my $wav = new Audio::Wav;
+
+my $read = $wav->read($ARGV[0]);
+my $details = $read->details();
+print Data::Dumper->Dump([ $details ]);

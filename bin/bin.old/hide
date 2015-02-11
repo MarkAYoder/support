@@ -1,0 +1,21 @@
+#!/usr/bin/perl -w
+
+#
+# Takes files in the visible2 cd structure and 'hides' them in the visible2.old directory.
+#
+
+use strict;
+use Cwd;
+
+my $dir = cwd();
+my $file;
+my $oldDir = $dir;
+
+if($dir =~ s|/visible2/cdrom/visible2|/visible2/cdrom/visible2.old|) {
+  system("mkdir -p $dir");
+  foreach $file (@ARGV) {
+    rename "$oldDir/$file", "$dir/$file" or die "Can't rename $dir to $dir";
+  }
+} else {
+  die "Can't find visible2 in the path\n";
+}

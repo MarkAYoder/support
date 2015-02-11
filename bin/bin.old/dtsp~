@@ -1,0 +1,3 @@
+# Signal First Stuff
+export CDROOT=$HOME/projects/SignalFirst/visible3/cdrom/dtsp
+export BOOKTYPE=dtsp

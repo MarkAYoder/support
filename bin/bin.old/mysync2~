@@ -1,0 +1,2 @@
+rsync -e ssh -navz --links --exclude=.htaccess --exclude=*.dvdproj --exclude=zipAll.zip --exclude mysync --exclude archives --exclude FromJim --delete /home/yoder/projects/SignalFirst/visible2/cdrom/visible2 yoder@afs.rose-hulman.edu:/afs/rose-hulman.edu/groups/Books/DSPFirst/ > /tmp/mysync &
+tail -f /tmp/mysync

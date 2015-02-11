@@ -1,0 +1,8 @@
+tb
+BeagleBoard
+BeagleBoard.old
+visible2
+.htaccess
+*.dvdproj
+dtspv*.zip
+mysync

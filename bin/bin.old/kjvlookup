@@ -1,0 +1,36 @@
+#!/usr/bin/perl
+use strict;
+
+$ARGV[1] =~ s/:/%3a/;
+$ARGV[2] =~ s/:/%3a/;
+my $passage = join('+', @ARGV);
+
+print "Looking up $passage...\n";
+
+# Create a user agent object
+use LWP::UserAgent;
+my $ua = new LWP::UserAgent;
+$ua->agent("AgentName/0.1 " . $ua->agent);
+
+# Create a request
+my $req = new HTTP::Request GET => "http://bible.gospelcom.net/cgi-bin/bible?passage=$passage&SUBMIT=Lookup&version=kjv&showfn=no&showxref=no&language=english";
+$req->content_type('application/x-www-form-urlencoded');
+$req->content('match=www&errors=0');
+
+# Pass request to the user agent and get a response back
+my $res = $ua->request($req);
+
+# Check the outcome of the response
+if ($res->is_success) {
+    $res->content =~ m|<DT>(.*)</DL>|;
+    my $tmp = $1;
+    $tmp =~ s| <DD>|: |g;
+    $tmp =~ s|<DT>|\n|g;
+    print "$tmp\n";
+    open FD, ">/tmp/tmp.html";
+    print FD $res->content;
+    close FD;
+
+} else {
+    print "Bad luck this time\n";
+}
