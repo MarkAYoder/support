@@ -1,0 +1,87 @@
+<script type="text/javascript">
+<!--
+var BrowserDetect = {
+	init: function () {
+		this.OS = this.searchString(this.dataOS) || "an unknown OS";
+	},
+	searchString: function (data) {
+		for (var i=0;i<data.length;i++)	{
+			var dataString = data[i].string;
+			var dataProp = data[i].prop;
+			this.versionSearchString = data[i].versionSearch || data[i].identity;
+			if (dataString) {
+				if (dataString.indexOf(data[i].subString) != -1)
+					return data[i].identity;
+			}
+			else if (dataProp)
+				return data[i].identity;
+		}
+	},
+	searchVersion: function (dataString) {
+		var index = dataString.indexOf(this.versionSearchString);
+		if (index == -1) return;
+		return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
+	},
+	
+	dataOS : [
+		{
+			string: navigator.platform,
+			subString: "Win",
+			identity: ".win"
+			
+		},
+		{
+			string: navigator.platform,
+			subString: "Mac",
+			identity: ".mac"
+		
+		},
+		{
+			string: navigator.platform,
+			subString: "Linux",
+			identity: ".linux"
+			
+		}
+	]
+
+};
+BrowserDetect.init();
+
+// -->
+</script>
+
+
+<script type="text/javascript">
+<!--
+/**************************************************/
+var VINAME = "fracdelay";	/* set this value */
+var LLBNAME = "fracdly_85";	/* set this value */
+var VIWIDTH = "700"		/* set this value */
+var VIHEIGHT = "500"		/* set this value */
+/* LLB’s Should be uploaded in the format  .win.llb, .mac.llb .linux.llb */
+/**************************************************/
+
+
+document.write('<object classid="CLSID:A40B0AD4-B50E-4E58-8A1D-8544233807AF" codebase="http://ftp.ni.com/support/softlib/labview/labview_runtime/8.5/windows/LabVIEW85RuntimeEngine.exe" width="' + VIWIDTH + '" height="' + VIHEIGHT + '">');
+document.write('<param name="SRC" value="'+ LLBNAME + BrowserDetect.OS + '.llb">');
+document.write('<param name="LVFPPVINAME" value="'+ VINAME + '.vi">');
+document.write('<param name="REQCTRL" value="false">');
+document.write('<param name="RUNLOCALLY" value="true">');
+document.write('<embed src="'+ LLBNAME + BrowserDetect.OS + '.llb" reqctrl="true" runlocally="true" type="application/x-labviewrpvi85" pluginspage="http://digital.ni.com/express.nsf/bycode/cnx85" lvfppviname="'+ VINAME + '.vi" width="' + VIWIDTH + '" height="' + VIHEIGHT + '">');
+document.write('</object>');
+
+// -->
+</script>
+
+
+
+
+<br><br>
+/* Remove Script after this line for deployment */
+
+<script type="text/javascript">
+<!--
+document.write('<br><H5> Debugging Information</H5>');
+document.write('<h6><p>Detected OS:   ' + BrowserDetect.OS + '</p></h6>');
+// -->
+</script>
