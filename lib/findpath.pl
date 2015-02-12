@@ -305,7 +305,7 @@ local($tag, @keys, @values);
 
 # @path is a global variable
 
-# print "Found movie\n";
+print "Found movie\n";
 # Fix the path to the movie source.
 $_ = $params{'src'};
 if($_) {
@@ -342,18 +342,12 @@ if(!$opt_e) {
     print "Embedding $src\n";
 
 $tag = "
-<object classid=\"clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B\"
-width=\"" . $params{'width'} . "\" height=\"" . $params{'height'} . "\"
-codebase=\"http://www.apple.com/qtactivex/qtplugin.cab\">
-";
-my $parm;
-for $parm (keys %params) {
-  $tag .= "<param name=\"" . $parm . "\" value=\"" . $params{$parm} . "\" />\n";
-}
-$tag .= "<embed " . &putparams(%params) . "
-pluginspage=\"http://www.apple.com/quicktime/download/\">
-</embed>
-</object>
+<video width=\"" . $params{'width'} . "\" height=\"" . $params{'height'} .
+  "\" controls>
+  <source src=\"" .  $params{'src'} . "\" type=\"video/mp4\">
+  <source src=\"movie.ogg\" type=\"video/ogg\">
+Your browser does not support the video tag.
+</video>
 ";
 
 }
