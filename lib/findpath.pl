@@ -305,7 +305,7 @@ local($tag, @keys, @values);
 
 # @path is a global variable
 
-print "Found movie\n";
+# print "Found movie\n";
 # Fix the path to the movie source.
 $_ = $params{'src'};
 if($_) {
@@ -345,6 +345,7 @@ $tag = "
 <video width=\"" . $params{'width'} . "\" height=\"" . $params{'height'} .
   "\" controls>
   <source src=\"" .  $params{'src'} . "\" type=\"video/mp4\">
+  <source src=\"" .  $params{'src'} . "\" type=\"video/mov\">
   <source src=\"movie.ogg\" type=\"video/ogg\">
 Your browser does not support the video tag.
 </video>
