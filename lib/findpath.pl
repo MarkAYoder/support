@@ -345,12 +345,15 @@ $tag = "
 <video width=\"" . $params{'width'} . "\" height=\"" . $params{'height'} .
   "\" controls>
   <source src=\"" .  $params{'src'} . "\" type=\"video/mp4\">
-  <source src=\"" .  $params{'src'} . "\" type=\"video/mov\">
-  <source src=\"movie.ogg\" type=\"video/ogg\">
 Your browser does not support the video tag.
 </video>
 ";
-
+# my $parm;
+# for $parm (keys %params) {
+  # $tag .= "<param name=\"" . $parm . "\" value=\"" . $params{$parm} . "\" />\n";
+  # print "parm = $parm\n";
+# }
+$tag;
 }
 else {
     print "Not embedding $src\n";
