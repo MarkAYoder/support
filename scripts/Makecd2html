@@ -58,6 +58,10 @@ $data{'a'}		= "&anchor(%params)";
 $data{'img'}		= "&img(%params)";
 $data{'movie'}		= "&movie(%params)";
 
+$data{'mathjax'}	= "<script type=\"text/javascript\"
+  src=\"https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML\">
+</script>";
+
 $data{'cd-title'}	= "<title>";
 $data{'/cd-title'}	= "</title>";
 
