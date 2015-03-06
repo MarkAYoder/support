@@ -93,12 +93,13 @@ if(bookType() eq 'dtps' ) {
     print OUTPUT "<cd-h1>$chapnum. $chapname\n";
 }
 
+	$mp3  = "overview.mp3";
 	$wav  = "overview.wav";
 	$au   = "overview.au";
 	$mov  = "overview.mov";
-	if(-e $wav) {
-	    print OUTPUT "<a href=\"$wav\">\n";
-	    print OUTPUT "<img style=\"border:none\" alt=\"Click for Audio\" src=\"tape.gif\" />";
+	if(-e $mp3) {
+	    print OUTPUT "<a href=\"$mp3\">\n";
+	    print OUTPUT "<img style=\"border:none\" alt=\"Click for Audio\" src=\"speaker.png\" />";
 	    print OUTPUT "</a>\n";
 	}
 

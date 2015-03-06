@@ -45,7 +45,7 @@ require 'head.pl';
 sub makesummary {
 # $num is the chapter number
 my($path, $unit, $noshow, $num) = @_;
-my($text, $html, $gif, $wav, $mov);
+my($text, $html, $gif, $mp3, $mov);
 
 my $veryfirst=1;  # Set if anything at all is found.
 my $first=1;  # Used to see if any demos/labs were found
@@ -55,9 +55,9 @@ if(!-e $path) {
 	print "Can\'t find $path\n";
 	return;
 }
-if(-e "$path/overview.wav") {
-	    print OUTPUT "<a href=\"$path/overview.wav\">";
-	    print OUTPUT "<img style=\"align:center border:none\" alt=\"Click for Audio\" src=\"tape.gif\" />";
+if(-e "$path/overview.mp3") {
+	    print OUTPUT "<a href=\"$path/overview.mp3\">";
+	    print OUTPUT "<img style=\"align:center border:none\" alt=\"Click for Audio\" src=\"speaker.png\" />";
 	    print OUTPUT "</a>\n";
 	}
 
@@ -81,7 +81,7 @@ foreach $demo (sort readdir(DEMOS)) {
 	$jpg  = "$path/$demo/overview.jpg";
 	$png  = "$path/$demo/overview.png";
 	$gif  = "$path/$demo/overview.gif";
-	$wav  = "$path/$demo/overview.wav";
+	$mp3  = "$path/$demo/overview.mp3";
 	$mov  = "$path/$demo/overview.mov";
 	$pdf  = "$path/$demo/$demo.pdf";
 	$doc  = "$path/$demo/$demo.docx";
@@ -132,9 +132,9 @@ foreach $demo (sort readdir(DEMOS)) {
 	  } else {
 	      print OUTPUT "<td>\n";
 	  }
-	  if(-e $wav) {
-	    print OUTPUT "<a href=\"$wav\">";
-	    print OUTPUT "<img style=\"border:none\" align=\"right\" alt=\"Click for Audio\" src=\"tape.gif\" />";
+	  if(-e $mp3) {
+	    print OUTPUT "<a href=\"$mp3\">";
+	    print OUTPUT "<img style=\"border:none\" align=\"right\" alt=\"Click for Audio\" src=\"speaker.png\" />";
 	    print OUTPUT "</a>\n";
 	  }
 	  while(<TEXT>) {
