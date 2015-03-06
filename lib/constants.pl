@@ -58,10 +58,11 @@
 #';
 $Header = '$Header: /home/ratbert5/myoder/cd/visible2/support/lib/RCS/constants.pl,v 1.19 2000/04/17 21:35:00 myoder Exp myoder $';
 
-@Headings = ("", "chapters", "demos", "demosLV", "labs", "labsLV", "example", "exercise", "homework");
 @Headings = ("", "chapters", "demos", "demosLV", "labs", "labsLV", "example", "exercise", "homework", "figures", "baf");
 # This is the order for dtsp
 @Headings = ("", "chapters", "figures", "baf", "homework", "labs", "demosLV");
+# This is the order for dspfirst
+@Headings = ("", "chapters", "demos", "demosLV", "labs", "labsLV", "example", "exercise", "homework");
 
 @chapter = ("0", "1sines", "2complex", "3phasors", "4spect", 
 "5samplin", "6fir", "7firfreq", "8ztrans", "9feedbac", "10specta");
