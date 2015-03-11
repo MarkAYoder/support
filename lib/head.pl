@@ -38,6 +38,13 @@ $unit = $params{'unit'};
 $next = $params{'next'};        # Used for homework
 $prev = $params{'prev'};
 
+if(defined $params{'math'}) {
+    $math =  "<script type=\"text/javascript\"
+  src=\"https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML\">
+</script>";
+    print "mathjax\n";
+}
+
 $anaflag = $params{'analytics'};
 
 # print "head called with chap=$chap and unit=$unit\n" if $debug;
@@ -102,6 +109,7 @@ if(bookType() eq 'dtsp') {
 <meta name=\"copyright\" content=\"Oppenheim, Schafer, Discrete-Time Signal Processing, ISBN 0-13-198842-5. Hall, Upper Saddle River, NJ 07458. &copy; 2010 Pearson Education, Inc.\" />
 
 $analytics
+$math
 ";
 
 
@@ -114,6 +122,7 @@ $analytics
 <meta name=\"copyright\" content=\"McClellan, Schafer, and Yoder, Signal Processing First, ISBN 0-13-065562-7. Prentice Hall, Upper Saddle River, NJ 07458. &copy; 2012 Pearson Education, Inc.\" />
 
 $analytics
+$math
 ";
 }
 
