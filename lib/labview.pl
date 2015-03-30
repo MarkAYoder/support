@@ -49,6 +49,9 @@ if ($vers eq '86') {
 if ($vers eq '2010') {
 	$num = '2010';   $id = 'B0'; $num3 = '';
 }
+if ($vers eq '2014') {
+	$num = '2014';   $id = 'B0'; $num3 = '';
+}
 if ($vers eq '82' or $vers eq '85' or $vers eq '86') {
 # load script to load LabVIEW
   "<a name=\"LabVIEW\"></a>
@@ -88,7 +91,7 @@ document.write('<font size=-2 color=gray>(LV$num ' + BrowserDetect.browser + ' '
 
 }
 
-elsif ($vers eq '2010') {
+elsif ($vers eq '2014') {
 # load script to load LabVIEW
 # print "Found $vers\n";
   "<a name=\"LabVIEW\"></a>
@@ -104,7 +107,7 @@ var LLBNAME = \"LabVIEW/builds/$src/$src\";	/* set this value */
 /**************************************************/
 $img
 "
-. doWin2010()
+. doWin2014()
 . doMac()
 .
 "
@@ -189,9 +192,9 @@ document.write('</object>');
 }
 
 #==============
-# doWin2010
+# doWin2014
 #==============
-sub doWin2010 {
+sub doWin2014 {
 "
 
 if(BrowserDetect.OS.search(/.win/) != -1) { 
